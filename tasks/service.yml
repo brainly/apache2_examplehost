@@ -1,0 +1,32 @@
+---
+- name: Create a vhost configuration
+  template:
+    src: examplehost.conf.j2
+    dest: /etc/apache2/sites-available/examplehost.conf
+    owner: root
+    group: root
+    mode: 0644
+  notify: Reload apache
+
+- name: Enable site
+  file:
+    src: /etc/apache2/sites-available/examplehost.conf
+    dest: /etc/apache2/sites-enabled/examplehost.conf
+    state: link
+  notify: Reload apache
+
+- name: Create document root for example host
+  file:
+    name: /var/www/examplehost/
+    mode: 0755
+    owner: root
+    group: root
+    state: directory
+
+- name: Copy index.php file
+  copy:
+    src: index.php
+    dest: /var/www/examplehost/index.php
+    mode: 0644
+    owner: root
+    group: root

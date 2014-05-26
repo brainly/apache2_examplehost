@@ -1,0 +1,9 @@
+---
+- name: Add examplehost nrpe configuration
+  template:
+    src: examplehost.nrpe.conf.j2
+    dest: /etc/nagios/nrpe.d/examplehost.cfg
+    mode: 0644
+    owner: root
+    group: root
+  notify: Restart nrpe

@@ -1,0 +1,1 @@
+command[check_examplehost_http]=/usr/lib/nagios/plugins/check_http -H examplehost -I {{ ansible_default_ipv4.address }} -p 80 -t 5 -w 3 -c 4 -s 'Loaded Configuration'

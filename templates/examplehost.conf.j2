@@ -1,0 +1,19 @@
+NameVirtualHost {{ ansible_default_ipv4.address }}:80
+<VirtualHost {{ ansible_default_ipv4.address }}:80>
+    DocumentRoot /var/www/examplehost/
+    ServerName examplehost
+
+    CustomLog ${APACHE_LOG_DIR}/examplehost.access.log combined_time
+
+    RewriteEngine on
+
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteRule ^/(.*)$ /index.php [QSA,L]
+
+    <Directory /var/www/examplehost/>
+       Options None
+       Order deny,allow
+       Allow from all
+    </Directory>
+
+</VirtualHost>

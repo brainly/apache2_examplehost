@@ -1,0 +1,15 @@
+---
+galaxy_info:
+  author: Pawel Rozlach
+  company: Zadane.pl sp. z o.o.
+  description: Example of apache2_base role usage
+  license: Apache 2.0
+  min_ansible_version: 1.6
+  platforms:
+    - name: Debian
+      versions:
+        - wheezy
+  categories:
+    - web
+dependencies:
+  - {role: apache2_base, apache2_base_php_enabled: True}
