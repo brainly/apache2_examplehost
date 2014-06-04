@@ -12,4 +12,4 @@ galaxy_info:
   categories:
     - web
 dependencies:
-  - {role: apache2_base, apache2_base_php_enabled: True}
+  - {role: vespian.apache2_base, apache2_base_php_enabled: True}
